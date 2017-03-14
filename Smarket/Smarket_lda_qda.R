@@ -1,7 +1,7 @@
 library(ISLR)
 names(Smarket)
 library(MASS)
-train=(Year<2005)
+train=(Smarket$Year<2005)
 Smarket.2005 = Smarket[!train,]
 #lda
 lda.fit = lda(Direction ~ Lag1 + Lag2, data = Smarket,data = Smarket, subset = train)
