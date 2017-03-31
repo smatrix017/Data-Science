@@ -1,0 +1,22 @@
+table(train$Income.Group)
+train$Income.Group = ifelse(train$Income.Group == "<=50K",0,1)
+train = subset(train,select = -c(ID))
+install.packages("rpart")
+library(rpart)
+set.seed(333)
+train.tree = rpart(Income.Group ~ .,data=train,method = "class", control=rpart.control(minsplit = 20, minbucket = 100, maxdepth = 10, xval = 5))
+summary(train.tree)
+install.packages("rpart.plot")
+library(rpart.plot)
+rpart.plot(train.tree)
+prediction_train = predict(train.tree, newdata = train, type = "class")
+prediction_test = predict(train.tree, newdata = test, type = "class")
+install.packages("caret")
+library(caret)
+confusionMatrix(prediction_train,train$Income.Group)
+solution_frame = data.frame
+solution_frame = data.frame(ID = test$ID,Income.Group = prediction_test)
+write.csv(solution_frame,file = "final_solution.csv")
+
+# install any package if error occurs (e1071 is  a package)
+#values can be changed using excel
