@@ -1,1 +1,1 @@
-This repository contains models for problems that I solve for practice along with covering the theory from the book "Introduction to Stastical Learning by Trevor Hastie and Robert Tibshirani". Datasets being used are available in ISLR library.   
+Playing with some datasets.  
