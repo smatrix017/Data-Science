@@ -1,0 +1,6 @@
+train <- read.csv("train.csv",stringsAsFactors = TRUE)
+test <- read.csv("test.csv",stringsAsFactors = TRUE)
+prop.table(table(train$Survived))
+test$survived = rep(0,418)
+submit = data.frame(PassengerID = test$PassengerId,Survived = test$survived)
+write.csv(submit, file = "alldie.csv",row.names = FALSE)
